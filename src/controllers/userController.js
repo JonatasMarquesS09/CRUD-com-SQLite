@@ -16,6 +16,25 @@ export const getAllUser = async (req, res) => {
     
 }
 
+export const getUserid = async (req, res) => {
+    const id = req.params.id
+    
+    try {
+       const findUser = await prisma.user.findUnique({
+
+        where: { id: Number(id) }
+
+       })
+
+       res.status(200).json(findUser)
+    }catch (error) {
+        res.status(500).json({
+            mensagem: "Erro ao buscar usuário por id",
+            error: error.message
+        })
+    }
+}
+
 export const crateNewEmailAndUser = async (req, res) => {
     const { name, email } = req.body
     
