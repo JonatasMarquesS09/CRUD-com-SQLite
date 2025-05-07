@@ -36,11 +36,11 @@ export const getUserid = async (req, res) => {
 }
 
 export const crateNewEmailAndUser = async (req, res) => {
-    const { name, email } = req.body
+    const { name, email, password } = req.body
     
     try {
         const newUser = await prisma.user.create({
-            data: {name, email}
+            data: {name, email, password}
         })
     
         res.status(201).json(newUser)
@@ -54,12 +54,12 @@ export const crateNewEmailAndUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
     const id = req.params.id
-    const  {name, email} = req.body
+    const  {name, email, password} = req.body
 
     try {
         const updateUser = await prisma.user.update({
             where: {id: parseInt(id)},
-            data: {name, email}
+            data: {name, email, password}
         })
 
         res.status(200).json(updateUser)
