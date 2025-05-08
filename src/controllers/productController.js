@@ -57,7 +57,7 @@ export const updateProduct = async (req, res) => {
 
     try{
         const putProduct = await prisma.products.update({
-            where: {id: Number(id)},
+            where: {id: parseInt(id)},
             data: {name, description, price, stock, createdAt}
         })
 
@@ -71,7 +71,7 @@ export const updateProduct = async (req, res) => {
 }
 
 export const deleteProduct = async (req, res) => {
-    const id = req.params
+    const id = req.params.id
 
     try{
         const deleteProduct = await prisma.products.delete({
