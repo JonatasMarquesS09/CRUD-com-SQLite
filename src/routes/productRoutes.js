@@ -1,7 +1,7 @@
 import express from 'express'
 import {getAllProducts, getProductId, createNewProduct, updateProduct, deleteProduct} from "../controllers/productController.js"
 import { validate } from '../middleware/validate.js'
-import { createProductSchema, updateProductSchema } from '../schemas/productsSchemas.js'
+import { createProductSchema} from '../schemas/productsSchemas.js'
 
 const router = express.Router()
 
